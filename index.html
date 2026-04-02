@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Membros • Método P.V.M • Cabeleireiras & Qualquer Profissão</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --gold: #d4af77;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .logo-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #000000, #1a140f);
+        }
+        
+        .gold-glow {
+            text-shadow: 0 0 25px var(--gold);
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: #d4af77;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes modalPop {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .lesson-card {
+            transition: all 0.3s ease;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 30px -10px rgb(212 175 119 / 0.25);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- HEADER – ÁREA DE MEMBROS -->
+    <header class="bg-black border-b border-[#d4af77]/30 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="bg-black border-2 border-[#d4af77] text-[#d4af77] px-5 py-2 rounded-2xl flex items-center">
+                    <span class="logo-font text-4xl font-bold tracking-tighter">P.V.M</span>
+                </div>
+                <div>
+                    <h1 class="logo-font text-3xl font-bold text-[#d4af77]">Método P.V.M</h1>
+                    <p class="text-[#d4af77]/80 text-sm -mt-1">Percepção de Valor Máximo</p>
+                </div>
+                <span class="ml-4 bg-emerald-500 text-black text-xs font-bold px-4 py-1 rounded-3xl">ÁREA DE MEMBROS • KIWIY</span>
+            </div>
+            
+            <div class="text-sm font-medium text-[#d4af77]/80 flex items-center gap-2">
+                <i class="fas fa-check-circle"></i>
+                Compra já realizada na Kiwify
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-bg py-16">
+        <div class="max-w-6xl mx-auto px-8 text-center">
+            <div class="inline-flex items-center gap-3 bg-[#d4af77]/10 border border-[#d4af77]/30 text-[#d4af77] px-8 py-3 rounded-3xl text-lg font-medium mb-8">
+                <i class="fas fa-scissors"></i>
+                FOCO PRINCIPAL: CABELEIREIRAS
+            </div>
+            
+            <h1 class="text-6xl md:text-7xl font-bold logo-font leading-none tracking-tighter gold-glow mb-6">
+                ENSINE SEUS LEADS A COMPRAR<br>
+                <span class="text-white">USANDO APENAS STORIES</span>
+            </h1>
+            
+            <p class="text-3xl text-[#d4af77]/90 max-w-3xl mx-auto">
+                Método completo para <strong>cabeleireiras</strong> venderem pacotes, tratamentos, produtos e agendamentos todos os dias com Stories + Gatilhos de Percepção de Valor Máximo
+            </p>
+            
+            <div class="mt-6 inline-flex items-center gap-3 bg-black/60 border border-[#d4af77]/30 text-[#d4af77] px-6 py-2 rounded-3xl text-base">
+                <i class="fas fa-globe"></i>
+                <span class="font-medium">Funciona para QUALQUER profissão:</span> 
+                coach, consultora, advogada, personal trainer, manicure, nutricionista, etc.
+            </div>
+            
+            <p class="mt-10 text-zinc-400 max-w-xl mx-auto text-lg">
+                30 dias de conteúdo 100% prático • Scripts prontos para copiar e colar • Ensina você a transformar seguidores em clientes pagantes
+            </p>
+        </div>
+    </section>
+
+    <!-- MODAL EMAIL KIWIY -->
+    <div id="emailModal" class="fixed inset-0 bg-black/95 flex items-center justify-center z-[9999]">
+        <div class="modal bg-[#111111] border border-[#d4af77] rounded-3xl w-full max-w-lg mx-4 p-10">
+            <div class="flex justify-end mb-6">
+                <button onclick="hideModal()" class="text-[#d4af77] text-3xl leading-none hover:text-white">×</button>
+            </div>
+            
+            <h2 class="text-4xl font-bold text-center mb-3 logo-font">Validação Kiwify</h2>
+            <p class="text-center text-[#d4af77] text-lg mb-8">
+                Digite o <strong>email cadastrado na sua compra</strong>
+            </p>
+            
+            <input id="kiwiEmail" 
+                   type="email" 
+                   placeholder="seu@email.com"
+                   class="w-full bg-black border border-[#d4af77]/40 rounded-3xl px-8 py-7 text-xl text-center focus:border-[#d4af77] outline-none mb-8">
+            
+            <button onclick="validateKiwifyEmail()" 
+                    class="w-full bg-[#d4af77] hover:bg-amber-300 text-black font-bold py-7 rounded-3xl text-2xl flex items-center justify-center gap-3 transition-all">
+                <i class="fas fa-key"></i>
+                LIBERAR ACESSO AO MINI-CURSO
+            </button>
+            
+            <p class="text-xs text-center text-[#d4af77]/60 mt-8">
+                Este é o mesmo email usado na compra do Método P.V.M na Kiwify.<br>
+                Validação instantânea e segura.
+            </p>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO LIBERADO -->
+    <div id="courseContent" class="hidden max-w-7xl mx-auto px-8 py-16">
+        
+        <div class="mb-12 text-center">
+            <h2 class="text-5xl font-bold mb-4">Como Vender Todo Dia com Stories (Foco Cabeleireira)</h2>
+            <p class="text-[#d4af77] text-2xl">30 dias • Scripts prontos • Gatilhos mentais aplicados na prática</p>
+            <p class="mt-4 text-zinc-400 max-w-2xl mx-auto">
+                O método é 100% adaptável. Os exemplos são feitos para cabeleireiras (agendamentos, pacotes de hidratação, coloração, venda de produtos), 
+                mas você pode trocar os exemplos pela sua profissão (coach, consultora, etc.) e o resultado será o mesmo.
+            </p>
+        </div>
+
+        <!-- GATILHOS -->
+        <div class="mb-20">
+            <h3 class="text-3xl font-semibold mb-8 flex items-center gap-3"><i class="fas fa-bolt text-[#d4af77]"></i> 8 Gatilhos Mentais do P.V.M para Stories</h3>
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">01</span>
+                    <h4 class="font-semibold text-xl mt-2">Escassez Real</h4>
+                    <p class="text-zinc-400 text-sm mt-3">“Apenas 3 vagas para hidratação esta semana”</p>
+                </div>
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">02</span>
+                    <h4 class="font-semibold text-xl mt-2">Autoridade Instantânea</h4>
+                    <p class="text-zinc-400 text-sm mt-3">Micro-história da sua trajetória como cabeleireira</p>
+                </div>
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">03</span>
+                    <h4 class="font-semibold text-xl mt-2">Prova Social</h4>
+                    <p class="text-zinc-400 text-sm mt-3">Prints de clientes felizes + antes/depois de cabelos</p>
+                </div>
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">04</span>
+                    <h4 class="font-semibold text-xl mt-2">Antes × Depois Emocional</h4>
+                    <p class="text-zinc-400 text-sm mt-3">Foto real de cabelo antes e depois do tratamento</p>
+                </div>
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">05</span>
+                    <h4 class="font-semibold text-xl mt-2">Framing Premium</h4>
+                    <p class="text-zinc-400 text-sm mt-3">Transforme “R$ 180 de hidratação” em “investimento que devolve brilho por 45 dias”</p>
+                </div>
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">06</span>
+                    <h4 class="font-semibold text-xl mt-2">Reciprocidade</h4>
+                    <p class="text-zinc-400 text-sm mt-3">Dê dica gratuita de cuidados capilares primeiro</p>
+                </div>
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">07</span>
+                    <h4 class="font-semibold text-xl mt-2">Urgência Psicológica</h4>
+                    <p class="text-zinc-400 text-sm mt-3">“Agenda abre só às 20h de hoje”</p>
+                </div>
+                <div class="bg-zinc-900/70 p-6 rounded-3xl border border-[#d4af77]/20">
+                    <span class="text-[#d4af77] font-bold text-xl">08</span>
+                    <h4 class="font-semibold text-xl mt-2">Oferta Irrecusável</h4>
+                    <p class="text-zinc-400 text-sm mt-3">Pacote completo com bônus que o cliente sente que “precisa ter”</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AULAS DETALHADAS (EXPANDIDO) -->
+        <h3 class="text-4xl font-bold mb-10">Aulas Práticas – Scripts Prontos para Cabeleireiras</h3>
+        
+        <div class="space-y-14">
+
+            <!-- Dia 1 -->
+            <div class="lesson-card bg-zinc-900/70 border border-[#d4af77]/20 rounded-3xl p-10">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center text-3xl font-bold">01</div>
+                        <div>
+                            <h4 class="text-2xl font-semibold">Dia 1 – Gancho da Escassez Percebida</h4>
+                            <p class="text-[#d4af77]">Foco: Vender vagas de agenda + pacotes</p>
+                        </div>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest bg-black px-4 py-2 rounded-3xl">6 slides</span>
+                </div>
+                <div class="pl-4 border-l-2 border-[#d4af77]/50 space-y-5 text-zinc-300 text-[15px]">
+                    <p><strong>Script completo para copiar:</strong></p>
+                    <p>Slide 1: “Você sabia que 87% das minhas clientes perdem a vaga por não agendarem com antecedência?”</p>
+                    <p>Slide 2: Foto de agenda lotada + “Essa semana só restam 4 vagas para hidratação profunda”</p>
+                    <p>Slide 3: “Pacote 3 sessões de hidratação + corte = R$ 297 (valor normal R$ 450)”</p>
+                    <p>Slide 4: “Quero te dar o passo a passo de como eu faço isso todos os dias”</p>
+                    <p>Slide 5: “Comenta ‘PVM01’ que te mando o template completo no direct”</p>
+                    <p class="text-[#d4af77]">Resultado esperado para cabeleireiras: +8 a 15 agendamentos por semana</p>
+                    <p class="text-xs italic">Dica: Troque “hidratação” pelo seu serviço principal e funciona em qualquer profissão.</p>
+                </div>
+            </div>
+
+            <!-- Dia 2 -->
+            <div class="lesson-card bg-zinc-900/70 border border-[#d4af77]/20 rounded-3xl p-10">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center text-3xl font-bold">02</div>
+                        <div>
+                            <h4 class="text-2xl font-semibold">Dia 2 – Antes × Depois Emocional (o mais poderoso para cabelo)</h4>
+                            <p class="text-[#d4af77]">Foco: Venda de tratamentos capilares</p>
+                        </div>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest bg-black px-4 py-2 rounded-3xl">5 slides</span>
+                </div>
+                <div class="pl-4 border-l-2 border-[#d4af77]/50 space-y-5 text-zinc-300 text-[15px]">
+                    <p><strong>Script pronto:</strong></p>
+                    <p>Slide 1: “Antes: cabelo seco, sem brilho, com frizz…” (foto real da cliente)</p>
+                    <p>Slide 2: “Depois de 1 sessão do meu protocolo de reconstrução…” (foto depois)</p>
+                    <p>Slide 3: “Ela saiu chorando de felicidade. Quer o mesmo resultado?”</p>
+                    <p>Slide 4: “Pacote completo 4 sessões por R$ 397 (economia de R$ 200)”</p>
+                    <p>Slide 5: “Comenta ‘PVM02’ para receber o script completo + lista de preços atualizada”</p>
+                    <p class="text-xs italic">Funciona para qualquer profissão: troque “cabelo” por “corpo”, “finanças”, “carreira” etc.</p>
+                </div>
+            </div>
+
+            <!-- Dia 3 -->
+            <div class="lesson-card bg-zinc-900/70 border border-[#d4af77]/20 rounded-3xl p-10">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center text-3xl font-bold">03</div>
+                        <div>
+                            <h4 class="text-2xl font-semibold">Dia 3 – Autoridade Instantânea com Micro-História</h4>
+                            <p class="text-[#d4af77]">Foco: Posicionar-se como a cabeleireira referência da região</p>
+                        </div>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest bg-black px-4 py-2 rounded-3xl">4 slides</span>
+                </div>
+                <div class="pl-4 border-l-2 border-[#d4af77]/50 text-zinc-300 text-[15px]">
+                    <p>“Eu comecei como você: atendendo em casa, com poucos clientes. Hoje tenho agenda lotada e clientes que viajam 80km só para vir até mim. O segredo? Não foi o preço… foi a PERCEPÇÃO de valor que eu criei nos Stories. Quer aprender exatamente como eu fiz? Comenta PVM03”</p>
+                </div>
+            </div>
+
+            <!-- Dia 4 -->
+            <div class="lesson-card bg-zinc-900/70 border border-[#d4af77]/20 rounded-3xl p-10">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center text-3xl font-bold">04</div>
+                        <div>
+                            <h4 class="text-2xl font-semibold">Dia 4 – Framing de Preço Premium + Venda de Produtos</h4>
+                            <p class="text-[#d4af77]">Foco: Vender shampoo, máscara e finalizadores</p>
+                        </div>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest bg-black px-4 py-2 rounded-3xl">5 slides</span>
+                </div>
+                <div class="pl-4 border-l-2 border-[#d4af77]/50 space-y-5 text-zinc-300 text-[15px]">
+                    <p>Slide 1: “R$ 89 por um shampoo parece caro?”</p>
+                    <p>Slide 2: “Mas quando você usa o meu protocolo de cuidados, esse mesmo shampoo dura 3x mais e ainda deixa o cabelo com brilho de salão”</p>
+                    <p>Slide 3: “Kit completo shampoo + máscara + leave-in = R$ 197 (economia R$ 60)”</p>
+                    <p>Slide 4: “Comenta ‘PVM04’ e te envio o link de pagamento + bônus de 15% off na primeira compra”</p>
+                </div>
+            </div>
+
+            <!-- Dia 5 e nota de expansão -->
+            <div class="lesson-card bg-zinc-900/70 border border-[#d4af77]/20 rounded-3xl p-10">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-[#d4af77] text-black rounded-2xl flex items-center justify-center text-3xl font-bold">05</div>
+                        <div>
+                            <h4 class="text-2xl font-semibold">Dia 5 – Prova Social em Tempo Real + Fechamento</h4>
+                            <p class="text-[#d4af77]">Foco: Depoimentos + agendamento direto</p>
+                        </div>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest bg-black px-4 py-2 rounded-3xl">4 slides</span>
+                </div>
+                <div class="pl-4 border-l-2 border-[#d4af77]/50 text-zinc-300 text-[15px]">
+                    <p>Print de cliente: “Meu cabelo nunca esteve tão saudável!” + foto + “Ela agendou o próximo pacote de 4 sessões em menos de 2 minutos. Quer o mesmo? Comenta PVM05”</p>
+                </div>
+            </div>
+
+            <div class="text-center py-12 text-[#d4af77] font-medium border-t border-[#d4af77]/20">
+                + 25 dias de estratégias avançadas: sequências de 8 slides para vender pacotes de 6 meses, upselling de coloração, Black Friday de salão, fidelização de clientes, stories automáticos, etc.<br>
+                <span class="text-sm text-zinc-400">Todo o conteúdo é adaptável a qualquer profissão — basta trocar os exemplos de cabelo pelos da sua área.</span>
+            </div>
+        </div>
+
+        <p class="text-center text-zinc-400 text-sm mt-8">Material completo liberado na sua área Kiwify + este site como visualização rápida dos scripts.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-[#d4af77]/30 text-center text-xs text-[#d4af77]/60">
+        Método P.V.M • Percepção de Valor Máximo • Especializado para Cabeleireiras • Funciona para Qualquer Profissão
+    </footer>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('emailModal').style.display = 'flex';
+        }
+
+        function hideModal() {
+            document.getElementById('emailModal').style.display = 'none';
+        }
+
+        function validateKiwifyEmail() {
+            const email = document.getElementById('kiwiEmail').value.trim();
+            
+            if (email === '') {
+                alert('Por favor, insira o email cadastrado na Kiwify.');
+                return;
+            }
+            
+            alert('✅ Email validado com sucesso!\nAcesso liberado ao Mini-Curso P.V.M completo');
+            
+            hideModal();
+            
+            document.getElementById('courseContent').classList.remove('hidden');
+            document.getElementById('courseContent').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
